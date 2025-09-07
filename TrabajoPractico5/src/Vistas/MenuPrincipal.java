@@ -94,6 +94,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMciudades.setText("Ciudades");
 
         jMIagregarCiudades.setText("Agregar Ciudades");
+        jMIagregarCiudades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIagregarCiudadesActionPerformed(evt);
+            }
+        });
         jMciudades.add(jMIagregarCiudades);
 
         jMenuBar1.add(jMciudades);
@@ -143,6 +148,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         boc.setVisible(true);
         escritorio.add(boc);
     }//GEN-LAST:event_jMIborrarClienteActionPerformed
+
+    private void jMIagregarCiudadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIagregarCiudadesActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        AgregarCiudades ac = new AgregarCiudades();
+        ac.setVisible(true);
+        escritorio.add(ac);
+    }//GEN-LAST:event_jMIagregarCiudadesActionPerformed
 
     /**
      * @param args the command line arguments
