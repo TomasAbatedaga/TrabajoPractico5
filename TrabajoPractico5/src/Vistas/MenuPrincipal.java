@@ -71,6 +71,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMclientes.add(jMIbuscarCliente);
 
         jMIborrarCliente.setText("Borrar Cliente");
+        jMIborrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIborrarClienteActionPerformed(evt);
+            }
+        });
         jMclientes.add(jMIborrarCliente);
 
         jMenuBar1.add(jMclientes);
@@ -124,10 +129,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        BuscarCliente bc = new BuscarCliente();
-        bc.setVisible(true);
-        escritorio.add(bc);
+        BuscarCliente buc = new BuscarCliente();
+        buc.setVisible(true);
+        escritorio.add(buc);
     }//GEN-LAST:event_jMIbuscarClienteActionPerformed
+
+    private void jMIborrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIborrarClienteActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        BorrarCliente boc = new BorrarCliente();
+        boc.setVisible(true);
+        escritorio.add(boc);
+    }//GEN-LAST:event_jMIborrarClienteActionPerformed
 
     /**
      * @param args the command line arguments
