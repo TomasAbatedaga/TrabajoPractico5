@@ -84,6 +84,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMdirectorios.setText("Directorios");
 
         jMIbuscarClientePorCiudad.setText("Buscar Cliente por Ciudad");
+        jMIbuscarClientePorCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIbuscarClientePorCiudadActionPerformed(evt);
+            }
+        });
         jMdirectorios.add(jMIbuscarClientePorCiudad);
 
         jMIbuscarTelefonoPorApellido.setText("Buscar telefono por Apellido");
@@ -157,6 +162,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ac.setVisible(true);
         escritorio.add(ac);
     }//GEN-LAST:event_jMIagregarCiudadesActionPerformed
+
+    private void jMIbuscarClientePorCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIbuscarClientePorCiudadActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ClientesPorCiudad cpc = new ClientesPorCiudad();
+        cpc.setVisible(true);
+        escritorio.add(cpc);
+    }//GEN-LAST:event_jMIbuscarClientePorCiudadActionPerformed
 
     /**
      * @param args the command line arguments
