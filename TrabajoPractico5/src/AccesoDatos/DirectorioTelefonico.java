@@ -18,6 +18,15 @@ import java.util.ArrayList;
  */
 public class DirectorioTelefonico {
     private TreeMap<Long,Contacto> agenda = new TreeMap<>();
+    public static final DirectorioTelefonico DIRECTORIO = new DirectorioTelefonico();
+    public static final Set<String> CIUDADES = new TreeSet<String>();
+
+    static {
+        CIUDADES.add("San Luis");
+        CIUDADES.add("Villa Mercedes");
+        CIUDADES.add("Mendoza");
+        CIUDADES.add("Cordoba");
+    }
     
     public boolean agregarContacto(Long telefono,Contacto contacto){
         if (telefono == null || contacto == null) {

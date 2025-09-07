@@ -4,17 +4,21 @@
  */
 package Vistas;
 
+import Entidad.Contacto;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author abate
  */
 public class AgregarCliente extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AgregarCliente
-     */
+    
+    
     public AgregarCliente() {
         initComponents();
+        armarCombo();
     }
 
     /**
@@ -35,14 +39,14 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jtfDni = new javax.swing.JTextField();
+        jtfDomicilio = new javax.swing.JTextField();
+        jtfNombre = new javax.swing.JTextField();
+        jtfApellido = new javax.swing.JTextField();
+        jcbCiudad = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jtfTelefono = new javax.swing.JTextField();
         jbGuardarCliente = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
 
@@ -66,7 +70,11 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Domicilio:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbCiudadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -83,15 +91,15 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4)
-                            .addComponent(jComboBox1, 0, 154, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
+                            .addComponent(jtfNombre)
+                            .addComponent(jtfApellido)
+                            .addComponent(jcbCiudad, 0, 154, Short.MAX_VALUE)
+                            .addComponent(jtfDni))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -100,23 +108,23 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -133,7 +141,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(149, 149, 149))
         );
         jPanel3Layout.setVerticalGroup(
@@ -142,11 +150,16 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jbGuardarCliente.setText("Guardar");
+        jbGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarClienteActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -220,9 +233,71 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jbGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarClienteActionPerformed
+        // TODO add your handling code here:
+        Contacto nuevoCliente = new Contacto();
+        
+        if (checkCamposVacios()) {
+            JOptionPane.showMessageDialog(this, "Lo campos no pueden estar vacios");
+            return;
+        }
+        
+        try{
+            int dni =Integer.parseInt(jtfDni.getText());
+            Long telefono = Long.parseLong(jtfTelefono.getText());
+            String nombre = jtfNombre.getText();
+            String apellido = jtfApellido.getText();
+            String ciudad = (String) jcbCiudad.getSelectedItem();
+            String direccion = jtfDomicilio.getText();
 
+            nuevoCliente.setDni(dni);
+            nuevoCliente.setNombre(nombre);
+            nuevoCliente.setApellido(apellido);
+            nuevoCliente.setCiudad(ciudad);
+            nuevoCliente.setDireccion(direccion);
+            //nuevoCliente.setTelefono(telefono);
+            boolean ok = AccesoDatos.DirectorioTelefonico.DIRECTORIO.agregarContacto(telefono, nuevoCliente);
+            if (!ok) {
+                javax.swing.JOptionPane.showMessageDialog(this, "El telefono ya existe");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Contacto guardado");
+                limpiar();
+            }
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Dni y telefono tiene que ser un numero");
+        }
+    }//GEN-LAST:event_jbGuardarClienteActionPerformed
+
+    private void jcbCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCiudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbCiudadActionPerformed
+
+    public void limpiar(){
+        jtfDni.setText("");
+        jtfNombre.setText("");
+        jtfApellido.setText("");
+        jcbCiudad.setSelectedItem(null);
+        jtfDomicilio.setText("");
+        jtfTelefono.setText("");
+    }
+    
+    public void armarCombo(){
+        jcbCiudad.removeAllItems();
+        for (String c : AccesoDatos.DirectorioTelefonico.CIUDADES) {
+            jcbCiudad.addItem(c);            
+        }
+    }
+    
+    public boolean checkCamposVacios (){
+        return jtfDni.getText().trim().isEmpty() ||
+           jtfNombre.getText().trim().isEmpty() ||
+           jtfApellido.getText().trim().isEmpty() ||
+           jtfDomicilio.getText().trim().isEmpty() ||
+           jtfTelefono.getText().trim().isEmpty() ||
+           jcbCiudad.getSelectedItem()==null;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -234,12 +309,15 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JButton jbGuardarCliente;
     private javax.swing.JButton jbSalir;
+    private javax.swing.JComboBox<String> jcbCiudad;
+    private javax.swing.JTextField jtfApellido;
+    private javax.swing.JTextField jtfDni;
+    private javax.swing.JTextField jtfDomicilio;
+    private javax.swing.JTextField jtfNombre;
+    private javax.swing.JTextField jtfTelefono;
     // End of variables declaration//GEN-END:variables
 }
+
+

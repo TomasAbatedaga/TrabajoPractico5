@@ -4,6 +4,8 @@
  */
 package Vistas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author abate
@@ -28,7 +30,7 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        jtfCiudad = new javax.swing.JTextField();
         jbGuardarCiudad = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
 
@@ -40,6 +42,11 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
         jLabel7.setText("Nombre Ciudad:");
 
         jbGuardarCiudad.setText("Guardar");
+        jbGuardarCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarCiudadActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +65,7 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
                         .addGap(53, 53, 53)
                         .addComponent(jLabel7)
                         .addGap(33, 33, 33)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtfCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(195, 195, 195)
                         .addComponent(jLabel1)))
@@ -77,7 +84,7 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardarCiudad)
@@ -93,12 +100,24 @@ public class AgregarCiudades extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jbGuardarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarCiudadActionPerformed
+        // TODO add your handling code here:
+        String nuevaCiudad = jtfCiudad.getText();
+        if (nuevaCiudad.isEmpty()) {
+            JOptionPane.showMessageDialog(this,"No puede estar vacio");
+        } else {
+            JOptionPane.showMessageDialog(this,"Se agrego la Ciudad");
+        }
+        AccesoDatos.DirectorioTelefonico.CIUDADES.add(nuevaCiudad);
+        jtfCiudad.setText("");
+    }//GEN-LAST:event_jbGuardarCiudadActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JButton jbGuardarCiudad;
     private javax.swing.JButton jbSalir;
+    private javax.swing.JTextField jtfCiudad;
     // End of variables declaration//GEN-END:variables
 }

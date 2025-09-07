@@ -16,13 +16,20 @@ public class Contacto {
     private String apellido;
     private String ciudad;
     private String direccion;
+    private int telefono;
 
-    public Contacto(int dni, String nombre, String apellido, String ciudad, String direccion) {
+    public Contacto(int dni, String nombre, String apellido, String ciudad, String direccion, int telefono) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.ciudad = ciudad;
         this.direccion = direccion;
+        this.telefono = telefono;
+    }
+
+    
+
+    public Contacto() {
     }
 
     public int getDni() {
@@ -64,6 +71,15 @@ public class Contacto {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+    
     
     @Override
     public boolean equals(Object o) {
