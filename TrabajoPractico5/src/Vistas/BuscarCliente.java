@@ -42,7 +42,7 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jtfTelefono = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jlClientes = new javax.swing.JList<>();
+        jlTelefonos = new javax.swing.JList<>();
         jbSalir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -120,12 +120,23 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Telefono:");
 
-        jlClientes.setModel(new javax.swing.AbstractListModel<String>() {
+        jtfTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfTelefonoKeyReleased(evt);
+            }
+        });
+
+        jlTelefonos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { " ", " ", " " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jlClientes);
+        jlTelefonos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jlTelefonosValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jlTelefonos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -200,6 +211,52 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jtfTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTelefonoKeyReleased
+        // TODO add your handling code here:
+        String texto = jtfTelefono.getText().trim();
+
+    if (!texto.isEmpty()) {
+        try {
+            long tel = Long.parseLong(texto); // convierto el texto a número
+            Entidad.Contacto c = AccesoDatos.DirectorioTelefonico.DIRECTORIO.buscarContacto(tel);
+
+            if (c != null) {
+                // Si existe el contacto, muestro los datos en los JTextField
+                jtfDni.setText(String.valueOf(c.getDni()));
+                jtfNombre.setText(c.getNombre());
+                jtfApellido.setText(c.getApellido());
+                jtfDomicilio.setText(c.getDireccion());
+                jtfCiudad.setText(c.getCiudad());
+            } else {
+                // Si no existe, limpio o muestro mensaje
+                jtfDni.setText("");
+                jtfNombre.setText("");
+                jtfApellido.setText("");
+                jtfDomicilio.setText("");
+                jtfCiudad.setText("");
+            }
+        } catch (NumberFormatException ex) {
+            // Si el usuario escribió letras u otra cosa
+            jtfDni.setText("");
+            jtfNombre.setText("");
+            jtfApellido.setText("");
+            jtfDomicilio.setText("");
+            jtfCiudad.setText("");
+        }
+    } else {
+        // Si borró todo el campo, limpio también
+        jtfDni.setText("");
+        jtfNombre.setText("");
+        jtfApellido.setText("");
+        jtfDomicilio.setText("");
+        jtfCiudad.setText("");
+    }
+    }//GEN-LAST:event_jtfTelefonoKeyReleased
+
+    private void jlTelefonosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlTelefonosValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlTelefonosValueChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -213,7 +270,7 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JList<String> jlClientes;
+    private javax.swing.JList<String> jlTelefonos;
     private javax.swing.JTextField jtfApellido;
     private javax.swing.JTextField jtfCiudad;
     private javax.swing.JTextField jtfDni;
