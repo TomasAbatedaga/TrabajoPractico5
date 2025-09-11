@@ -11,6 +11,9 @@ import java.util.Objects;
  * @author abate
  */
 public class Contacto {
+    // ========================
+    // Atributos principales
+    // ========================
     private int dni;
     private String nombre;
     private String apellido;
@@ -18,6 +21,9 @@ public class Contacto {
     private String direccion;
     private Long telefono;
 
+    // ========================
+    // Constructores
+    // ========================
     public Contacto(int dni, String nombre, String apellido, String ciudad, String direccion, Long telefono) {
         this.dni = dni;
         this.nombre = nombre;
@@ -27,11 +33,13 @@ public class Contacto {
         this.telefono = telefono;
     }
 
-    
-
     public Contacto() {
+        // Constructor vacío requerido para compatibilidad
     }
 
+    // ========================
+    // Getters & Setters
+    // ========================
     public int getDni() {
         return dni;
     }
@@ -79,8 +87,10 @@ public class Contacto {
     public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
-    
-    
+
+    // ========================
+    // Métodos de utilidad
+    // ========================
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,9 +106,10 @@ public class Contacto {
 
     @Override
     public String toString() {
-        return "Contacto{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + '}';
+        return "Contacto{" +
+                "dni=" + dni +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                '}';
     }
-    
-    
-            
 }
